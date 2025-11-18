@@ -12,5 +12,7 @@
     <p><strong>Дати:</strong> {{ trip.startDate }} - {{ trip.endDate }}</p>
     <p><strong>Ціна:</strong> ${{ trip.price }}</p>
     <p>{{ trip.description }}</p>
+
+    <button (click)="onSelect()">Детальніше</button>
   </div>
 </div>
