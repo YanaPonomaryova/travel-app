@@ -21,7 +21,8 @@ export class ItemsList {
     endDate: '2025-12-07',
     price: 1200,
     description: 'Незабутня подорож каналами Венеції.',
-    imageUrl: 'https://andy-travel.com.ua/sites/default/files/venice_grand_chanel_22.jpg'
+    imageUrl: 'https://andy-travel.com.ua/sites/default/files/venice_grand_chanel_22.jpg',
+    isSpecial: true       
   },
   {
     id: 2,
@@ -31,7 +32,8 @@ export class ItemsList {
     endDate: '2026-01-20',
     price: 1500,
     description: 'Активний відпочинок серед снігових вершин.',
-    imageUrl: 'https://gra.travel/media/images/first-alps.width-1920.jpg'
+    imageUrl: 'https://gra.travel/media/images/first-alps.width-1920.jpg',
+    isSpecial: false      
   }
 ];
 

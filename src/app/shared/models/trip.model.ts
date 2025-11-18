@@ -6,5 +6,6 @@ export interface Trip {
   endDate: string;
   price: number;
   description: string;
-  imageUrl?: string; 
+  imageUrl: string;
+  isSpecial?: boolean; 
 }
