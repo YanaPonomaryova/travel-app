@@ -7,5 +7,5 @@ export interface Trip {
   price: number;
   description: string;
   imageUrl: string;
-  isSpecial?: boolean; 
+  isSpecial: boolean;
 }
