@@ -1,0 +1,9 @@
+.search-input {
+  width: 400px;        /* ширина поля */
+  height: 35px;        /* висота поля */
+  font-size: 16px;     /* розмір тексту */
+  padding: 5px 10px;   /* внутрішні відступи */
+  border-radius: 8px;  /* закруглені кути */
+  border: 1px solid #ccc; /* рамка */
+  margin-bottom: 15px; /* відступ від карток */
+}

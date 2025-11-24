@@ -1,0 +1,17 @@
+
+<input 
+  type="text" 
+  [(ngModel)]="searchText" 
+  (input)="onSearchChange()"
+  placeholder="Пошук подорожей..." 
+  class="search-input">
+
+
+<div class="trips-container">
+  <div *ngFor="let trip of trips" class="trip-card">
+    <h3>{{ trip.name }} до {{ trip.destination }}</h3>
+    <p>{{ trip.description }}</p>
+    <p>Ціна: {{ trip.price }}$</p>
+    <button (click)="onTripSelected(trip)">Обрати</button>
+  </div>
+</div>
