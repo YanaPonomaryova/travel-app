@@ -1,0 +1,17 @@
+
+  <input 
+    type="text" 
+    [(ngModel)]="searchText" 
+    (input)="onSearchChange()"
+    placeholder="Пошук подорожей..." 
+    class="search-input">
+
+  <div class="cards-container">
+    <app-item-card 
+      *ngFor="let trip of trips" 
+      [trip]="trip"
+      (selectTrip)="onTripSelected($event)">
+    </app-item-card>
+  </div>
+
+<div class="top-bar"></div>
