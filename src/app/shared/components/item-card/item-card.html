@@ -1,6 +1,6 @@
 <div class="card" [ngClass]="{'special-trip': trip.isSpecial}">
   <img class="trip-image" [src]="trip.imageUrl" alt="{{ trip.name }}">
-  
+
   <div class="card-content">
     <h2>{{ trip.name }}</h2>
 
@@ -13,6 +13,8 @@
     <p><strong>Ціна:</strong> ${{ trip.price }}</p>
     <p>{{ trip.description }}</p>
 
-    <button (click)="onSelect()">Детальніше</button>
+    <a [routerLink]="['/items', trip.id]" class="details-btn">
+      Детальніше
+    </a>
   </div>
 </div>

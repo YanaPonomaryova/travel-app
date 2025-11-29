@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.css']
 })
 export class Header {
-  title = 'Travel App'; // ДОДАНО
+  title = 'Travel Breeze'; 
 }

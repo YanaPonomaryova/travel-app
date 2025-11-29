@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { TripDataService } from '../../../services/data';
 import { Trip } from '../../models/trip.model';
 import { Subscription } from 'rxjs';
+import { ItemCard } from '../item-card/item-card'; // <-- Додати імпорт
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ItemCard], // <-- Додати ItemCard сюди
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })

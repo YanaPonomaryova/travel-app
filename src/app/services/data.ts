@@ -28,4 +28,8 @@ export class TripDataService {
     );
     this.tripsSubject.next(filtered);
   }
+
+  getItemById(id: number) {
+  return this.trips.find(t => t.id === id);
+}
 }
