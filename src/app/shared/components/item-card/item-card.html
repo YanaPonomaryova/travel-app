@@ -1,4 +1,4 @@
-<div class="card" [ngClass]="{'special-trip': trip.isSpecial}">
+<div class="card" hoverHighlight [ngClass]="{'special-trip': trip.isSpecial}">
   <img class="trip-image" [src]="trip.imageUrl" alt="{{ trip.name }}">
 
   <div class="card-content">
@@ -11,7 +11,8 @@
     <p><strong>Місце:</strong> {{ trip.destination }}</p>
     <p><strong>Дати:</strong> {{ trip.startDate }} - {{ trip.endDate }}</p>
     <p><strong>Ціна:</strong> ${{ trip.price }}</p>
-    <p>{{ trip.description }}</p>
+
+    <p>{{ trip.description | shorten:80 }}</p>
 
     <a [routerLink]="['/items', trip.id]" class="details-btn">
       Детальніше

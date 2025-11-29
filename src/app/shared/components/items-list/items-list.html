@@ -1,17 +1,13 @@
+<input
+  type="text"
+  [(ngModel)]="searchText"
+  (input)="onSearchChange()"
+  placeholder="Пошук..."
+  class="search-input"
+/>
 
-  <input 
-    type="text" 
-    [(ngModel)]="searchText" 
-    (input)="onSearchChange()"
-    placeholder="Пошук подорожей..." 
-    class="search-input">
-
-  <div class="cards-container">
-    <app-item-card 
-      *ngFor="let trip of trips" 
-      [trip]="trip"
-      (selectTrip)="onTripSelected($event)">
-    </app-item-card>
+<div class="cards-container">
+  <div *ngFor="let trip of trips$ | async">
+    <app-item-card [trip]="trip"></app-item-card>
   </div>
-
-<div class="top-bar"></div>
+</div>

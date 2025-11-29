@@ -1,41 +1,26 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TripDataService } from '../../../services/data';
-import { Trip } from '../../models/trip.model';
-import { Subscription } from 'rxjs';
-import { ItemCard } from '../item-card/item-card'; // <-- Додати імпорт
+import { ItemCard } from '../item-card/item-card';
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, ItemCard], // <-- Додати ItemCard сюди
+  imports: [CommonModule, FormsModule, ItemCard],
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })
-export class ItemsList implements OnInit, OnDestroy {
+export class ItemsList {
 
-  trips: Trip[] = [];
+  trips$;  
   searchText: string = '';
-  private sub: Subscription = new Subscription();
 
-  constructor(private tripDataService: TripDataService) {}
-
-  ngOnInit(): void {
-    this.sub = this.tripDataService.trips$.subscribe(data => {
-      this.trips = data; 
-    });
-  }
-
-  onTripSelected(trip: Trip) {
-    alert(`Ви обрали подорож: ${trip.name} до ${trip.destination}`);
+  constructor(private tripDataService: TripDataService) {
+    this.trips$ = this.tripDataService.trips$;  
   }
 
   onSearchChange() {
-    this.tripDataService.filterItems(this.searchText); 
-  }
-
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    this.tripDataService.filterItems(this.searchText);
   }
 }
