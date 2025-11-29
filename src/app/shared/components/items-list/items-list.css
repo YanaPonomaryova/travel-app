@@ -21,6 +21,20 @@
   align-items: flex-start;
 }
 
+.add-btn {
+  display: inline-block;
+  margin: 10px 0 20px;
+  padding: 10px 16px;
+  background: #007bff;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.add-btn:hover {
+  background: #0056b3;
+}
 
 
 

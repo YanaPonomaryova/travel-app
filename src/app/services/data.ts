@@ -32,4 +32,23 @@ export class TripDataService {
   getItemById(id: number) {
   return this.trips.find(t => t.id === id);
 }
+
+addItem(item: any) {
+  const newItem: Trip = {
+    id: this.trips.length + 1,
+    name: item.name || '',
+    destination: item.destination || '',
+    startDate: item.startDate || '',
+    endDate: item.endDate || '',
+    price: Number(item.price) || 0,
+    description: item.description || '',
+    imageUrl: item.imageUrl || '',   // ← ПРАВИЛЬНО
+    isSpecial: false
+  };
+
+  this.trips.push(newItem);
+  this.tripsSubject.next(this.trips);
+}
+
+
 }

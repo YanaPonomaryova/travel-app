@@ -1,0 +1,78 @@
+/* Контейнер форми */
+form {
+  width: 550px;              /* ширше */
+  margin: 60px auto;         /* далі від верху + центр */
+  padding: 35px;             /* більше повітря */
+  background: #ffffff;       /* білий блок */
+  border-radius: 14px;       /* плавніший */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12); /* сучасна тінь */
+  display: flex;
+  flex-direction: column;
+  gap: 18px;                 /* більші відступи */
+  font-size: 16px;           /* збільшений текст */
+}
+
+/* Заголовок */
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 26px;           /* більше */
+  font-weight: 700;
+  color: #003f87;            /* темно-синій, щоб під стиль */
+}
+
+/* Підписи до полів */
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Інпути */
+input, textarea {
+  padding: 12px;
+  border: 1px solid #b8b8b8;
+  border-radius: 8px;
+  margin-top: 6px;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+input:focus, textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 6px rgba(0,123,255,0.4);
+}
+
+/* Опис */
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* Кнопка */
+button {
+  padding: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+/* Помилки */
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: -10px;
+}

@@ -1,3 +1,7 @@
+<!-- Кнопка додавання -->
+<a routerLink="/item-form" class="add-btn">Додати новий тур</a>
+
+<!-- Пошук -->
 <input
   type="text"
   [(ngModel)]="searchText"
@@ -6,6 +10,7 @@
   class="search-input"
 />
 
+<!-- Список карток -->
 <div class="cards-container">
   <div *ngFor="let trip of trips$ | async">
     <app-item-card [trip]="trip"></app-item-card>

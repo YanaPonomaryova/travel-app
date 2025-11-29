@@ -1,0 +1,51 @@
+<h2>Додати новий тур</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <label>
+    Назва:
+    <input formControlName="name">
+  </label>
+  <div class="error" *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+    Поле обов'язкове
+  </div>
+
+  <label>
+    Місце:
+    <input formControlName="destination">
+  </label>
+  <div class="error" *ngIf="form.get('destination')?.touched && form.get('destination')?.invalid">
+    Поле обов'язкове
+  </div>
+
+  <label>
+    Дата початку:
+    <input type="date" formControlName="startDate">
+  </label>
+
+  <label>
+    Дата кінця:
+    <input type="date" formControlName="endDate">
+  </label>
+
+  <label>
+    Ціна:
+    <input type="number" formControlName="price">
+  </label>
+
+  <label>
+    Опис:
+    <textarea formControlName="description"></textarea>
+  </label>
+
+  <label>
+    Фото (URL):
+    <input formControlName="imageUrl">
+  </label>
+  <div class="error" *ngIf="form.get('imageUrl')?.touched && form.get('imageUrl')?.invalid">
+    Поле обов'язкове
+  </div>
+
+  <button type="submit">Зберегти</button>
+
+</form>
