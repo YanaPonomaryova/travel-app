@@ -19,23 +19,25 @@ export class ItemForm {
     endDate: new FormControl('', Validators.required),
     price: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    imageUrl: new FormControl('', Validators.required)   
+    imageUrl: new FormControl('', Validators.required)
   });
 
   constructor(private tripService: TripDataService) {}
 
   onSubmit() {
-  if (this.form.invalid) {
-    this.form.markAllAsTouched();
-    return;
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    this.tripService.addItem(this.form.value).subscribe({
+      next: () => {
+        alert('Елемент додано!');
+        this.form.reset(); // очистити форму
+      },
+      error: () => {
+        alert('Помилка при додаванні елемента');
+      }
+    });
   }
-
-  this.tripService.addItem(this.form.value);
-
-
-  this.tripService['tripsSubject'].next(this.tripService['trips']);
-
-  alert('Елемент додано!');
-}
-
 }

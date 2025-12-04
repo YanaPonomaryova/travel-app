@@ -1,54 +1,57 @@
 import { Injectable } from '@angular/core';
 import { Trip } from '../shared/models/trip.model';
-import { Observable, of, BehaviorSubject } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TripDataService {
 
-  private trips: Trip[] = [
-    { id: 1, name: 'Венеційська пригода', destination: 'Венеція', startDate: '2025-12-01', endDate: '2025-12-07', price: 1200, description: 'Подорож каналами Венеції.', imageUrl: 'https://andy-travel.com.ua/sites/default/files/venice_grand_chanel_22.jpg', isSpecial: true },
-    { id: 2, name: 'Гірський трекінг', destination: 'Альпи', startDate: '2026-01-10', endDate: '2026-01-20', price: 1500, description: 'Активний відпочинок серед гір.', imageUrl: 'https://gra.travel/media/images/first-alps.width-1920.jpg', isSpecial: false }
-  ];
+  private baseUrl = '/trips'; 
 
-  // BehaviorSubject для реактивного стану
-  private tripsSubject = new BehaviorSubject<Trip[]>(this.trips);
-  trips$ = this.tripsSubject.asObservable();
+  constructor(private http: HttpClient) {}
 
+  // Отримати всі тури
   getItems(): Observable<Trip[]> {
-    return of(this.trips);
-  }
-
-  // Фільтрація списку
-  filterItems(searchText: string) {
-    const filtered = this.trips.filter(trip =>
-      trip.name.toLowerCase().includes(searchText.toLowerCase()) ||
-      trip.destination.toLowerCase().includes(searchText.toLowerCase())
+    return this.http.get<Trip[]>(this.baseUrl).pipe(
+      catchError(error => {
+        console.error('Error loading trips:', error);
+        return throwError(() => error);
+      })
     );
-    this.tripsSubject.next(filtered);
   }
 
-  getItemById(id: number) {
-  return this.trips.find(t => t.id === id);
-}
+  // Отримати один тур за id
+  getItemById(id: number): Observable<Trip> {
+    return this.http.get<Trip>(`${this.baseUrl}/${id}`).pipe(
+      catchError(error => {
+        console.error('Error loading trip:', error);
+        return throwError(() => error);
+      })
+    );
+  }
 
-addItem(item: any) {
-  const newItem: Trip = {
-    id: this.trips.length + 1,
-    name: item.name || '',
-    destination: item.destination || '',
-    startDate: item.startDate || '',
-    endDate: item.endDate || '',
-    price: Number(item.price) || 0,
-    description: item.description || '',
-    imageUrl: item.imageUrl || '',   // ← ПРАВИЛЬНО
-    isSpecial: false
-  };
+  // Додати новий тур
+  addItem(item: any): Observable<Trip> {
+    const newItem: Trip = {
+      id: 0,
+      name: item.name || '',
+      destination: item.destination || '',
+      startDate: item.startDate || '',
+      endDate: item.endDate || '',
+      price: Number(item.price) || 0,
+      description: item.description || '',
+      imageUrl: item.imageUrl || '',
+      isSpecial: false
+    };
 
-  this.trips.push(newItem);
-  this.tripsSubject.next(this.trips);
-}
-
-
+    return this.http.post<Trip>(this.baseUrl, newItem).pipe(
+      catchError(error => {
+        console.error('Error adding trip:', error);
+        return throwError(() => error);
+      })
+    );
+  }
 }

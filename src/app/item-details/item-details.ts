@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { TripDataService } from '../services/data';
 import { Trip } from '../shared/models/trip.model';
 
-
 @Component({
   selector: 'app-item-details',
   standalone: true,
@@ -14,7 +13,7 @@ import { Trip } from '../shared/models/trip.model';
 })
 export class ItemDetails implements OnInit {
 
-  trip!: Trip | undefined;
+  trip: Trip | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,6 +22,9 @@ export class ItemDetails implements OnInit {
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.trip = this.tripDataService.getItemById(id);
+
+    this.tripDataService.getItemById(id).subscribe(trip => {
+      this.trip = trip;
+    });
   }
 }
