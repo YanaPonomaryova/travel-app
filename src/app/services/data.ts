@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Trip } from '../shared/models/trip.model';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,22 +14,12 @@ export class TripDataService {
 
   // Отримати всі тури
   getItems(): Observable<Trip[]> {
-    return this.http.get<Trip[]>(this.baseUrl).pipe(
-      catchError(error => {
-        console.error('Error loading trips:', error);
-        return throwError(() => error);
-      })
-    );
+    return this.http.get<Trip[]>(this.baseUrl);
   }
 
   // Отримати один тур за id
   getItemById(id: number): Observable<Trip> {
-    return this.http.get<Trip>(`${this.baseUrl}/${id}`).pipe(
-      catchError(error => {
-        console.error('Error loading trip:', error);
-        return throwError(() => error);
-      })
-    );
+    return this.http.get<Trip>(`${this.baseUrl}/${id}`);
   }
 
   // Додати новий тур
@@ -47,11 +36,6 @@ export class TripDataService {
       isSpecial: false
     };
 
-    return this.http.post<Trip>(this.baseUrl, newItem).pipe(
-      catchError(error => {
-        console.error('Error adding trip:', error);
-        return throwError(() => error);
-      })
-    );
+    return this.http.post<Trip>(this.baseUrl, newItem);
   }
 }
