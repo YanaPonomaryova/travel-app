@@ -1,17 +1,37 @@
 import { Routes } from '@angular/router';
+import { LoginComponent } from './auth/login/login';
+import { RegisterComponent } from './auth/register/register';
 import { ItemsList } from './shared/components/items-list/items-list';
-import { ItemDetails } from './item-details/item-details';
+import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
-  { path: 'items', component: ItemsList },
-  { path: 'items/:id', component: ItemDetails },
 
-  // ДОДАЙ СЮДИ НОВИЙ МАРШРУТ
+ 
+  { path: '', component: ItemsList },
+
+  
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+
   {
-    path: 'item-form',
+    path: 'add',
     loadComponent: () =>
-      import('./item-form/item-form').then(m => m.ItemForm)
+      import('./item-form/item-form').then(m => m.ItemForm),
+    canActivate: [authGuard]
   },
 
-  { path: '', redirectTo: 'items', pathMatch: 'full' }
+  
+  {
+    path: 'edit/:id',
+    loadComponent: () =>
+      import('./item-form/item-form').then(m => m.ItemForm),
+    canActivate: [authGuard]
+  },
+
+ 
+  {
+    path: 'item/:id',
+    loadComponent: () =>
+      import('./item-details/item-details').then(m => m.ItemDetails)
+  }
 ];

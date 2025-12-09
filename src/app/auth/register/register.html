@@ -1,0 +1,13 @@
+<div class="auth-container">
+  <h2>Реєстрація</h2>
+
+  <input type="text" placeholder="Ваше ім'я" [(ngModel)]="name">
+  <input type="email" placeholder="Email" [(ngModel)]="email">
+  <input type="password" placeholder="Пароль" [(ngModel)]="password">
+
+  <button (click)="register()">Створити акаунт</button>
+
+  <p>Вже маєте акаунт?
+    <a routerLink="/login">Увійти</a>
+  </p>
+</div>
