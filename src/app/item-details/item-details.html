@@ -1,0 +1,13 @@
+<div class="details-wrapper" *ngIf="trip">
+  <h1>{{ trip.name }}</h1>
+
+  <img [src]="trip.imageUrl" alt="{{ trip.name }}" class="details-img">
+
+  <p><strong>Місце:</strong> {{ trip.destination }}</p>
+  <p><strong>Дати:</strong> {{ trip.startDate }} – {{ trip.endDate }}</p>
+  <p><strong>Ціна:</strong> ${{ trip.price }}</p>
+
+  <p>{{ trip.description }}</p>
+
+  <a routerLink="/items">← Назад до списку</a>
+</div>

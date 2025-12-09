@@ -1,0 +1,17 @@
+<header class="header-bar">
+  <div class="header-title">
+    <h1>Travel Breeze</h1>
+  </div>
+
+  <div class="header-actions">
+    <!-- Кнопка Увійти — якщо користувач НЕ залогінений -->
+    <a *ngIf="!auth.isLoggedIn()" routerLink="/login" class="login-btn">
+      Увійти
+    </a>
+
+    <!-- Кнопка Вийти — якщо користувач залогінений -->
+    <button *ngIf="auth.isLoggedIn()" class="login-btn logout-btn" (click)="logout()">
+      Вийти
+    </button>
+  </div>
+</header>
