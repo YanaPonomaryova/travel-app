@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf, NgClass } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Trip } from '../../models/trip.model';
 import { HoverHighlightDirective } from '../../directives/hover-highlight';
@@ -10,6 +10,8 @@ import { ShortenPipe } from '../../pipes/shorten-pipe';
   standalone: true,
   imports: [
     CommonModule,
+    NgIf,
+    NgClass,
     RouterModule,
     HoverHighlightDirective,
     ShortenPipe

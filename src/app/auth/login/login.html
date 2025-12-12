@@ -1,8 +1,19 @@
 <div class="auth-container">
   <h2>Увійти</h2>
 
-  <input type="email" placeholder="Email" [(ngModel)]="email">
-  <input type="password" placeholder="Пароль" [(ngModel)]="password">
+  <input
+    type="email"
+    name="email"
+    placeholder="Email"
+    [(ngModel)]="email"
+  />
+
+  <input
+    type="password"
+    name="password"
+    placeholder="Пароль"
+    [(ngModel)]="password"
+  />
 
   <button (click)="login()">Увійти</button>
 

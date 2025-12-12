@@ -1,7 +1,7 @@
 {
   "trips": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Венеційська пригода",
       "destination": "Венеція",
       "startDate": "2025-12-01",
@@ -12,7 +12,7 @@
       "isSpecial": true
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Гірський трекінг",
       "destination": "Альпи",
       "startDate": "2026-01-10",
@@ -29,12 +29,6 @@
       "name": "Яна",
       "email": "yanaponom2006@gmail.com",
       "password": "1234567zyf"
-    },
-    {
-      "id": "14ce",
-      "name": "Яна",
-      "email": "yanaponom2006@gmail.com",
-      "password": "12345678zyf"
     }
   ]
 }

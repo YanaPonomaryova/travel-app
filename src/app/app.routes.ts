@@ -6,10 +6,8 @@ import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
 
- 
   { path: '', component: ItemsList },
 
-  
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 
@@ -20,7 +18,6 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
 
-  
   {
     path: 'edit/:id',
     loadComponent: () =>
@@ -28,9 +25,8 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
 
- 
   {
-    path: 'item/:id',
+    path: 'items/:id',
     loadComponent: () =>
       import('./item-details/item-details').then(m => m.ItemDetails)
   }

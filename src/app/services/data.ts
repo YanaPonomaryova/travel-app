@@ -8,7 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TripDataService {
 
-  private baseUrl = '/trips'; 
+private baseUrl = 'http://localhost:3000/trips';
+
 
   constructor(private http: HttpClient) {}
 
