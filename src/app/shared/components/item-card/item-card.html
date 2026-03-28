@@ -1,0 +1,10 @@
+<div class="card">
+  <img class="trip-image" [src]="trip.imageUrl" alt="{{ trip.name }}">
+  <div class="card-content">
+    <h2>{{ trip.name }}</h2>
+    <p><strong>Місце:</strong> {{ trip.destination }}</p>
+    <p><strong>Дати:</strong> {{ trip.startDate }} - {{ trip.endDate }}</p>
+    <p><strong>Ціна:</strong> ${{ trip.price }}</p>
+    <p>{{ trip.description }}</p>
+  </div>
+</div>

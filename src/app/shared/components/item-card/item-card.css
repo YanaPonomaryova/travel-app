@@ -1,0 +1,23 @@
+.card {
+  display: flex;             
+  width: 500px;              
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  margin: 10px;
+  background: #7fcdda;
+  color: #000;
+}
+
+.trip-image {
+  width: 200px;              
+  height: 150px;             
+  object-fit: cover;         
+}
+
+.card-content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
