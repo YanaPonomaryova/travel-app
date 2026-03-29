@@ -1,0 +1,84 @@
+<h2>Додати новий тур</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <!-- Назва -->
+  <label>
+    Назва:
+    <input formControlName="name">
+  </label>
+  <div class="error" *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+    Поле обов'язкове
+  </div>
+
+  <!-- Місце -->
+  <label>
+    Місце:
+    <input formControlName="destination">
+  </label>
+  <div class="error" *ngIf="form.get('destination')?.touched && form.get('destination')?.invalid">
+    Поле обов'язкове
+  </div>
+
+  <!-- Дата початку -->
+  <label>
+    Дата початку:
+    <input type="date" formControlName="startDate">
+  </label>
+  <div class="error" *ngIf="form.get('startDate')?.touched && form.get('startDate')?.invalid">
+    Вкажіть дату початку
+  </div>
+
+  <!-- Дата завершення -->
+  <label>
+    Дата кінця:
+    <input type="date" formControlName="endDate">
+  </label>
+  <div class="error" *ngIf="form.get('endDate')?.touched && form.get('endDate')?.invalid">
+    Вкажіть дату завершення
+  </div>
+
+  <!-- ПОМИЛКА: дата кінця раніше дати початку -->
+  <div class="error"
+       *ngIf="form.errors?.['dateRange'] && form.get('endDate')?.touched">
+    Дата завершення не може бути раніше дати початку
+  </div>
+
+  <!-- Ціна -->
+  <label>
+    Ціна:
+    <input type="number" formControlName="price">
+  </label>
+  <div class="error" *ngIf="form.get('price')?.touched && form.get('price')?.errors?.['required']">
+    Поле обов'язкове
+  </div>
+  <div class="error" *ngIf="form.get('price')?.touched && form.get('price')?.errors?.['min']">
+    Ціна має бути більшою за 0
+  </div>
+
+  <!-- Опис -->
+  <label>
+    Опис:
+    <textarea formControlName="description"></textarea>
+  </label>
+  <div class="error" *ngIf="form.get('description')?.touched && form.get('description')?.invalid">
+    Поле обов'язкове
+  </div>
+
+  <!-- Фото -->
+  <label>
+    Фото (URL):
+    <input formControlName="imageUrl">
+  </label>
+  <div class="error"
+       *ngIf="form.get('imageUrl')?.touched && form.get('imageUrl')?.errors?.['required']">
+    Поле обов'язкове
+  </div>
+  <div class="error"
+       *ngIf="form.get('imageUrl')?.touched && form.get('imageUrl')?.errors?.['pattern']">
+    Введіть коректний URL (починається з http або https)
+  </div>
+
+  <button type="submit">Зберегти</button>
+
+</form>

@@ -1,0 +1,9 @@
+footer {
+  position: fixed;   /* закріплює футер */
+  bottom: 0;         /* прив'язує до нижнього краю вікна */
+  left: 0;
+  width: 100%;       /* розтягнути на всю ширину */
+  text-align: center;
+  padding: 10px 0;
+  background-color: #f1f1f1;
+}
